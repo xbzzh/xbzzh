@@ -1,0 +1,238 @@
+body{
+    margin: 0;
+}
+/* 大屏模式 */
+@media (min-width:600px) {
+    .navigation{
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 4;
+        margin-bottom: 1vh;
+        width: 100%;
+        height: fit-content;
+        background-color: white;
+        box-shadow: 0 0.2vh 0.5vh #ddd;
+    }
+    #menu{
+        display: none;
+    }
+    .navigation-list{
+        list-style: none;
+        margin: 0;
+    }
+    .list-bar{
+        position: relative;
+        float: right;
+        width: 9%;
+        margin-right: 2%;
+        line-height: 7.5vh;
+        text-align: center;
+        font-size: 2.1vh;
+    }
+    .list-bar-a{
+        color: rgb(44, 44, 44);
+        text-decoration: none;
+    }
+    .list-bar:hover{
+        box-shadow: inset 0 0 0.4vh #ddd;
+    }
+    .list-bar-a:hover{
+        color: green;
+    }
+    .navigation-logo{
+        float: left;
+        width: 25vh;
+        height: 5vh;
+        margin-top: 1.2vh;
+        margin-left: 2vh;
+        background: url(../assets/logo.png) no-repeat;
+        background-size: 100%;
+    }
+    .navigation-search{
+        float: left;
+        width: 17vh;
+        height: fit-content;
+        margin-top: 2.2vh;
+        margin-left: 4vh;
+    }
+    #navSearch{
+        width: 90%;
+        padding-left: 1vh;
+        height: 2.7vh;
+        border: 1px solid rgb(0, 85, 0);
+        border-radius: 2vh;
+    }
+    .navigation-icon{
+        display: none;
+    }
+    .work-list{
+        display: none;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        height: fit-content;
+        background-color: white;
+        border-bottom-left-radius: 2vh;
+        border-bottom-right-radius: 2vh;
+        box-shadow: 0 0.2vh 0.5vh #ddd;
+        overflow: hidden;
+    }
+    .work-list-bar{
+        display: block;
+        text-decoration: none;
+        line-height: 4.5vh;
+        font-size: 2vh;
+        color: rgb(90, 90, 90);
+    }
+    .work-list-bar:hover{
+        box-shadow: inset 0 0 0.4vh #ddd;
+        color: green;
+    }
+    #navWork:hover .work-list{
+        display: block;
+    }
+    .life-list{
+        display: none;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        height: fit-content;
+        background-color: white;
+        border-bottom-left-radius: 2vh;
+        border-bottom-right-radius: 2vh;
+        box-shadow: 0 0.2vh 0.5vh #ddd;
+        overflow: hidden;
+    }
+    .life-list-bar{
+        display: block;
+        text-decoration: none;
+        line-height: 4.5vh;
+        font-size: 2vh;
+        color: rgb(90, 90, 90);
+    }
+    .life-list-bar:hover{
+        box-shadow: inset 0 0 0.4vh #ddd;
+        color: green;
+    }
+    #navLife:hover .life-list{
+        display: block;
+    }
+}
+/* 小屏模式 */
+@media (max-width:599px) {
+    .navigation{
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 4;
+        margin-right: 1vh;
+        width: 6vh;
+        height: 100%;
+        background-color: white;
+        box-shadow: 0.2vh 0 0.5vh #ddd;
+        transition: width .6s ease;
+    }
+    .navigation-list{
+        display: none;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    #menu{
+        width: 100%;
+        line-height: 5vh;
+        font-size: 2.5vh;
+        font-weight: 600;
+        color: rgb(82, 82, 82);
+        text-align: center;
+        cursor: pointer;
+    }
+    #menu:hover{
+        box-shadow: inset 0 0 0.4vh #ddd;
+        color: green;
+    }
+    .list-bar{
+        float: top;
+        width: 100%;
+        margin-top: 4%;
+        line-height: 5vh;
+        text-align: center;
+        font-size: 2.4vh;
+    }
+    .list-bar-a{
+        color: rgb(44, 44, 44);
+        text-decoration: none;
+    }
+    .list-bar:hover{
+        box-shadow: inset 0 0 0.4vh #ddd;
+    }
+    .list-bar-a:hover{
+        color: green;
+    }
+    .navigation-logo{
+        display: none;
+        float: top;
+        width: 80%;
+        height: 5vh;
+        margin: auto;
+        margin-top: 1.5vh;
+        background: url(../assets/logo.png) no-repeat;
+        background-size: 100%;
+    }
+    .navigation-search{
+        display: none;
+        float: top;
+        width: 90%;
+        padding-left: 5%;
+        padding-right: 5%;
+        height: fit-content;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+    }
+    #navSearch{
+        width: 92%;
+        padding-left: 1vh;
+        height: 3.3vh;
+        border: 1px solid rgb(0, 85, 0);
+        border-radius: 2vh;
+    }
+    .navigation-icon{
+        width: 4vh;
+        height: 4vh;
+        margin-top: 1vh;
+        margin-left: 1vh;
+        background: url(../assets/icon.png) no-repeat;
+        background-size: 100%;
+    }
+    .work-list{
+        width: 100%;
+        height: fit-content;
+    }
+    .work-list-bar{
+        display: block;
+        text-decoration: none;
+        line-height: 4.5vh;
+        font-size: 2vh;
+        color: rgb(90, 90, 90);
+    }
+    .work-list-bar:hover{
+        box-shadow: inset 0 0 0.4vh #ddd;
+        color: green;
+    }
+    .life-list{
+        width: 100%;
+        height: fit-content;
+    }
+    .life-list-bar{
+        display: block;
+        text-decoration: none;
+        line-height: 4.5vh;
+        font-size: 2vh;
+        color: rgb(90, 90, 90);
+    }
+    .life-list-bar:hover{
+        box-shadow: inset 0 0 0.4vh #ddd;
+        color: green;
+    }
+}
