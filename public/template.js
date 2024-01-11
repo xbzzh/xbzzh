@@ -1,4 +1,5 @@
 let navigation_is_hide = true; // 左侧导航栏是否收起
+let options_is_hide = true; // 更多操作栏是否收起
 
 // window.addEventListener( 'resize', function() { // 监听窗口大小改变
 //     location.reload();
@@ -13,6 +14,8 @@ document.getElementById("menu").addEventListener('click', function(){ // 小屏-
         document.getElementById("navLogo").style.display = "block";
         document.getElementById("navSearchBox").style.display = "block";
         document.getElementById("navIcon").style.display = "none";
+        document.getElementById("optionsListBar1").innerHTML = "- 返回顶部 -";
+        document.getElementById("optionsListBar2").innerHTML = "- 关于本站 -";
     }
     else {
         document.getElementById("navigationMain").style.width = "6vh";
@@ -22,6 +25,57 @@ document.getElementById("menu").addEventListener('click', function(){ // 小屏-
         document.getElementById("navLogo").style.display = "none";
         document.getElementById("navSearchBox").style.display = "none";
         document.getElementById("navIcon").style.display = "block";
+        document.getElementById("optionsListBar1").innerHTML = "▲";
+        document.getElementById("optionsListBar2").innerHTML = "Z";
     }
     navigation_is_hide = !navigation_is_hide;
 });
+
+document.getElementById("options").addEventListener('click', function(){ // 更多操作按钮
+    if(options_is_hide) {
+        document.getElementById("options").style.color = "#43b244";
+        document.getElementById("optionsList").style.height = "10vh";
+        document.getElementById("optionsListBar1").style.opacity = "1";
+        document.getElementById("optionsListBar2").style.opacity = "1";
+    }
+    else {
+        document.getElementById("options").style.color = "rgb(82, 82, 82)";
+        document.getElementById("optionsList").style.height = "0";
+        document.getElementById("optionsListBar1").style.opacity = "0";
+        document.getElementById("optionsListBar2").style.opacity = "0";
+    }
+    options_is_hide = !options_is_hide;
+});
+
+document.getElementById("optionsListBar1").addEventListener('click', function() { // 返回顶部
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+document.getElementById("optionsListBar2").addEventListener('click', function() { // 关于本站
+    console.log("关于本站")
+});
+
+document.getElementById("navSearch").addEventListener('keyup', function(event) { // 导航栏-搜索框
+    var input_content;
+    if (event.key === 'Enter') { // 按下的是回车键
+        input_content = document.getElementById("navSearch").value;
+        if(input_content == "help") {
+            console.log("help");
+        }
+        else{
+            var warnbox = document.createElement('div');
+            warnbox.id = "alertBox";
+            warnbox.innerHTML = "输入help查看搜索帮助";
+            document.body.appendChild(warnbox);
+            setTimeout(destroy_alertBox, 1400);
+        }
+    }
+});
+
+function destroy_alertBox() {
+    var element = document.getElementById("alertBox");
+    if (element) element.parentNode.removeChild(element);
+}
