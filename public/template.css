@@ -42,6 +42,34 @@ abbr{
     border-radius: 2vh;
     box-shadow: 0 0 1vh #c1c1c1;
 }
+/* 鼠标点击特效 */
+.mouse-shape{
+    position: fixed;
+    z-index: 6;
+    width: 30px;
+    height: 30px;
+    animation: enlarge 0.5s ease;
+}
+@keyframes enlarge{
+    from{ transform: scale(0); }
+    to{ transform: scale(1); }
+}
+.m-square1{
+    border: 0.2vh solid #88c035;
+}
+.m-circle1{
+    border: 0.2vh solid #157135;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.m-square2{
+    border: 0.2vh solid #39cf43;
+}
+.m-circle2{
+    border: 0.2vh solid #a8eec1;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
 /* 大屏模式 */
 @media (min-width:870px) {
     body{
@@ -257,7 +285,7 @@ abbr{
         transition: width .6s ease;
     }
     .web-content{
-        width: 90%;
+        width: calc(100% - 6vh);
         height: fit-content;
         margin-left: 6vh;
     }

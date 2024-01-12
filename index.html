@@ -6,13 +6,7 @@
     <title>EiJiYuhZ的小站</title>
     <link rel="icon" type="image/x-icon" href="./assets/icon.png">
     <link rel="stylesheet" type="text/css" href="./public/template.css">
-    <style>
-        body{
-            background: url(./assets/background_home.png) no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./public/index_style.css">
 </head>
 <body>
     <div class="navigation web-font" id="navigationMain">
@@ -48,8 +42,64 @@
         <div id="options">※</div>
     </div>
     <div class="web-content"> <!-- 此处定制页面内容 -->
-        <div style="width:fit-content;height:5vh;margin:auto;margin-top:20%;font-size:3vh;font-weight:600;">施工中...</div>
+        <div class="title-hello-area">
+            <span id="shotInfo">Shot with HUAWEI Mate40Pro | 原创</span>
+            <h2 class="scrolldown">↓ 向下滚动 ↓</h2>
+            <div class="hello-background" id="backHello">
+                <span>Hello</span>
+                <div class="title-line"></div>
+            </div>
+            <h1 class="title-text">欢迎来到埃基亚兹的小站<br>
+                <span class="sub-title-text">——来自纯手搓的认证</span>
+                <div id="changeBack" class="web-font">click to change</div>
+            </h1>
+            <div class="index-content">
+                <div class="index-title-box">
+                    <div class="index-title"><div id="indexText">HOME首页</div></div>
+                </div>
+                
+            </div>
+        </div>
     </div>
 </body>
 <script src="./public/template.js"></script>
+<script>
+    const background = document.getElementById("backHello");
+    const title = document.getElementById("indexText");
+    var index_back_is_change = false;
+
+    document.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const homeW = title.offsetWidth;
+        if(scrollY != 0) {
+            background.style.backgroundPosition = "calc(50% + " + scrollY + "px) calc(50% + " + scrollY + "px)";
+            if(scrollY > background.offsetHeight / 3 && scrollY < 600) // 滑动到背景高度三分之一时，触发以下动画
+                title.style.transform = "translate(" + myMap(scrollY, 400, 600, homeW, 0) + "px)";
+            else if(scrollY < background.offsetHeight / 3)
+                title.style.transform = "translate(100%)";
+            else if(scrollY > 600)
+                title.style.transform = "translate(0)";
+        } 
+        else { // 在首页顶部
+            background.style.backgroundPosition = "";
+            title.style.transform = "translate(100%)";
+        }
+    });
+
+    document.getElementById("changeBack").addEventListener('click', function() {
+        if(index_back_is_change)
+            background.style.backgroundImage = "url(./assets/index_hello.jpg)";
+        else
+            background.style.backgroundImage = "url(./assets/index_hello2.jpg)";
+        index_back_is_change = !index_back_is_change;
+    });
+
+    document.getElementById("backHello").addEventListener('click', function() {
+        document.getElementById("shotInfo").style.opacity = "1";
+        setTimeout(function(){
+            document.getElementById("shotInfo").style.opacity = "0";
+        }, 1400);
+    });
+
+</script>
 </html>

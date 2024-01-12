@@ -1,5 +1,6 @@
 let navigation_is_hide = true; // 左侧导航栏是否收起
 let options_is_hide = true; // 更多操作栏是否收起
+var shapes = ["m-square1", "m-circle1", "m-square2", "m-circle2"]; // 鼠标点击特效样式表
 
 // window.addEventListener( 'resize', function() { // 监听窗口大小改变
 //     location.reload();
@@ -60,22 +61,51 @@ document.getElementById("optionsListBar2").addEventListener('click', function() 
 
 document.getElementById("navSearch").addEventListener('keyup', function(event) { // 导航栏-搜索框
     var input_content;
-    if (event.key === 'Enter') { // 按下的是回车键
+    if(event.key === 'Enter') { // 按下的是回车键
         input_content = document.getElementById("navSearch").value;
-        if(input_content == "help") {
-            console.log("help");
+        if(input_content == "help") { // 搜索帮助
+            raiseAlert("施工中", 1400);
         }
-        else{
-            var warnbox = document.createElement('div');
-            warnbox.id = "alertBox";
-            warnbox.innerHTML = "输入help查看搜索帮助";
-            document.body.appendChild(warnbox);
-            setTimeout(destroy_alertBox, 1400);
+        else if(input_content == "#ma-on") { // 开启鼠标点击特效
+            document.addEventListener("click", mouseAnimate);
+            raiseAlert("鼠标点击特效已开启", 1400);
         }
+        else if(input_content == "#ma-off") { // 关闭鼠标点击特效
+            document.removeEventListener("click", mouseAnimate);
+            raiseAlert("鼠标点击特效已关闭", 1400);
+        }
+        else // 帮助提示
+            raiseAlert("输入help查看搜索帮助", 1400);
     }
 });
 
 function destroy_alertBox() {
     var element = document.getElementById("alertBox");
     if (element) element.parentNode.removeChild(element);
+}
+
+function myMap(x, a, b, c, d) { // 将x从范围a~b比例映射到c~d
+    if (x <= a) return c; 
+    if (x >= b) return d;
+    return c + (d - c) * ((x - a) / (b - a));
+}
+
+function mouseAnimate(event) { // 鼠标点击特效
+    var shape = document.createElement("div");
+    shape.classList.add("mouse-shape");
+    shape.classList.add(shapes[Math.floor(Math.random() * shapes.length)]);
+    shape.style.left = (event.clientX - 15) + "px";
+    shape.style.top = (event.clientY - 15) + "px";
+    document.body.appendChild(shape);
+    setTimeout(function() {
+        document.body.removeChild(shape);
+    }, 910);
+}
+
+function raiseAlert(text, time){ // 开启一个提示框
+    var warnbox = document.createElement('div');
+    warnbox.id = "alertBox";
+    warnbox.innerHTML = text;
+    document.body.appendChild(warnbox);
+    setTimeout(destroy_alertBox, time);
 }
