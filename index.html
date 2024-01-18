@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="./assets/icon.png">
     <link rel="stylesheet" type="text/css" href="./public/template.css">
     <link rel="stylesheet" type="text/css" href="./public/index_style.css">
+    <link href="./lib/camroll_slider.css" rel="stylesheet">
 </head>
 <body>
     <div class="navigation web-font" id="navigationMain">
@@ -57,13 +58,62 @@
                 <div class="index-title-box">
                     <div class="index-title"><div id="indexText">HOME首页</div></div>
                 </div>
-                
+                <div class="index-container">
+                    <div class="index-articles">
+                        <div class="index-field-title">推荐文章</div>
+                        <div class="field-content1">
+                            
+                        </div>
+                    </div>
+                    <div class="index-tools">
+                        <div class="index-field-title">常用选项</div>
+                        <div class="field-content1">
+                        
+                        </div>
+                    </div>
+                    <div class="index-broadcast">
+                        <div id="my-slider" class="crs-wrap">
+                            <div class="crs-screen">
+                                <div class="crs-screen-roll">
+                                    <div class="crs-screen-item" id="changep" style="background-image: url('assets/background_home.png')">
+                                        <div class="crs-screen-item-content"><h1 id="changet">1施工中...</h1></div>
+                                    </div>
+                                    <div class="crs-screen-item" style="background-image: url('assets/background_home.png')">
+                                        <div class="crs-screen-item-content"><h1>2施工中...</h1></div>
+                                    </div>
+                                    <div class="crs-screen-item" style="background-image: url('assets/background_home.png')">
+                                        <div class="crs-screen-item-content"><h1>3施工中...</h1></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="crs-bar">
+                                <div class="crs-bar-roll-current"></div>
+                                <div class="crs-bar-roll-wrap">
+                                    <div class="crs-bar-roll">
+                                        <div class="crs-bar-roll-item" id="changes" style="background-image: url('assets/background_home.png')"></div>
+                                        <div class="crs-bar-roll-item" style="background-image: url('assets/background_home.png')"></div>
+                                        <div class="crs-bar-roll-item" style="background-image: url('assets/background_home.png')"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="index-message">
+                        <div class="index-field-title">即时通讯</div>
+                        <div class="field-content2">
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </body>
 <script src="./public/template.js"></script>
+<script src="./lib/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="./lib/camroll_slider.js"></script>
 <script>
+    $("#my-slider").camRollSlider(); // jQuery轮播图插件
     const background = document.getElementById("backHello");
     const title = document.getElementById("indexText");
     var index_back_is_change = false;
@@ -100,6 +150,5 @@
             document.getElementById("shotInfo").style.opacity = "0";
         }, 1400);
     });
-
 </script>
 </html>

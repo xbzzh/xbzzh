@@ -75,6 +75,116 @@ body{
         color: white;
         text-shadow: 0.2vh 0.2vh 0.5vh #aeaeae;
     }
+    .index-broadcast{
+        float: left;
+        width: 31%;
+        height: 46%;
+        background-color: rgba(255, 255, 255, 0.75);
+        border-radius: 3vh;
+        margin-left: 1.75%;
+        margin-top: 1%;
+        transition: box-shadow .6s ease;
+        overflow: hidden;
+    }
+    .index-broadcast:hover{ box-shadow: 0 0 1vh #a6a6a6; }
+    .index-message{
+        float: left;
+        width: 31%;
+        height: 46%;
+        background-color: rgba(255, 255, 255, 0.75);
+        border-radius: 3vh;
+        margin-left: 1.75%;
+        margin-top: 1.35%;
+        transition: box-shadow .6s ease;
+    }
+    .index-message:hover{ box-shadow: 0 0 1vh #a6a6a6; }
+    .index-articles{
+        float: right;
+        width: 31%;
+        height: 95%;
+        background-color: rgba(255, 255, 255, 0.75);
+        border-radius: 3vh;
+        margin-right: 1.75%;
+        margin-top: 1%;
+        transition: box-shadow .6s ease;
+    }
+    .index-articles:hover{ box-shadow: 0 0 1vh #a6a6a6; }
+    .index-tools{
+        float: right;
+        width: 31%;
+        height: 95%;
+        background-color: rgba(255, 255, 255, 0.75);
+        border-radius: 3vh;
+        margin-right: 1.75%;
+        margin-top: 1%;
+        transition: box-shadow .6s ease;
+    }
+    .index-tools:hover{ box-shadow: 0 0 1vh #a6a6a6; }
+    .index-field-title{
+        width: 70%;
+        line-height: 4vh;
+        margin-top: 3%;
+        margin-left: 3.5%;
+        padding-left: 1vh;
+        border-left: 1vh solid #6e8b74;
+        border-bottom-left-radius: 1vh;
+        border-top-left-radius: 1vh;
+        font-size: 3.2vh;
+        font-weight: 550;
+        color: #1b6d58;
+        user-select: none;
+    }
+    .field-content1{
+        width: 89%;
+        height: calc(92% - 4vh);
+        margin: auto;
+        margin-top: 3%;
+        overflow: auto;
+    }
+    .field-content2{
+        width: 89%;
+        height: calc(88% - 4vh);
+        margin: auto;
+        margin-top: 2%;
+        overflow: auto;
+    }
+    .field-content2::-webkit-scrollbar {
+        display: none;
+        width: 5px; /* 设置滚动条宽度 */
+    }
+    .index-message:hover .field-content2::-webkit-scrollbar{
+        display: block;
+    }
+    .field-content2::-webkit-scrollbar-track {
+        background-color: #00000000; /* 设置滚动条背景色 */
+    }
+    .field-content2::-webkit-scrollbar-thumb {
+        background-color: #8c8c8c9e; /* 设置滚动条滑块颜色 */
+        border-radius: 7px; /* 设置滚动条滑块圆角 */
+    }
+    .field-content2::-webkit-scrollbar-thumb:hover {
+        background-color: #6565659e; /* 设置滚动条滑块悬停颜色 */
+    }
+    .field-content1::-webkit-scrollbar {
+        display: none;
+        width: 5px;
+    }
+    .index-articles:hover .field-content1::-webkit-scrollbar{
+        display: block;
+    }
+    .index-tools:hover .field-content1::-webkit-scrollbar{
+        display: block;
+    }
+    .field-content1::-webkit-scrollbar-track {
+        background-color: #00000000;
+    }
+    .field-content1::-webkit-scrollbar-thumb {
+        background-color: #8c8c8c9e;
+        border-radius: 7px;
+    }
+    .field-content1::-webkit-scrollbar-thumb:hover {
+        background-color: #6565659e;
+    }
 }
 /* 小屏模式 */
 @media (max-width:869.99px) {
@@ -121,7 +231,7 @@ body{
         top: 118vh;
         left: 0;
         width: 100%;
-        height: 80vh;
+        padding-bottom: 2vh;
     }
     .index-title-box{
         height: 8vh;
@@ -143,6 +253,114 @@ body{
         color: white;
         text-shadow: 0.2vh 0.2vh 0.5vh #aeaeae;
     }
+    .index-broadcast{
+        width: 90%;
+        height: 35vh;
+        margin: auto;
+        margin-top: 2vh;
+        background-color: rgba(255, 255, 255, 0.75);
+        border-radius: 3vh;
+        transition: box-shadow .6s ease;
+        overflow: hidden;
+    }
+    .index-broadcast:hover{ box-shadow: 0 0 1vh #a6a6a6; }
+    .index-message{
+        width: 90%;
+        height: 35vh;
+        margin: auto;
+        margin-top: 2vh;
+        padding-top: 1.5vh;
+        background-color: rgba(255, 255, 255, 0.75);
+        border-radius: 3vh;
+        transition: box-shadow .6s ease;
+    }
+    .index-message:hover{ box-shadow: 0 0 1vh #a6a6a6; }
+    .index-articles{
+        width: 90%;
+        height: 60vh;
+        margin: auto;
+        margin-top: 2vh;
+        padding-top: 1.5vh;
+        background-color: rgba(255, 255, 255, 0.75);
+        border-radius: 3vh;
+        transition: box-shadow .6s ease;
+    }
+    .index-articles:hover{ box-shadow: 0 0 1vh #a6a6a6; }
+    .index-tools{
+        width: 90%;
+        height: 50vh;
+        margin: auto;
+        margin-top: 2vh;
+        padding-top: 1.5vh;
+        background-color: rgba(255, 255, 255, 0.75);
+        border-radius: 3vh;
+        transition: box-shadow .6s ease;
+    }
+    .index-tools:hover{ box-shadow: 0 0 1vh #a6a6a6; }
+    .index-field-title{
+        width: 70%;
+        line-height: 4vh;
+        margin-left: 1.6vh;
+        padding-left: 1vh;
+        border-left: 1vh solid #6e8b74;
+        border-bottom-left-radius: 1vh;
+        border-top-left-radius: 1vh;
+        font-size: 3.2vh;
+        font-weight: 550;
+        color: #1b6d58;
+        user-select: none;
+    }
+    .field-content1{
+        width: 89%;
+        height: calc(92% - 4vh);
+        margin: auto;
+        margin-top: 3%;
+        overflow: auto;
+    }
+    .field-content2{
+        width: 89%;
+        height: calc(88% - 4vh);
+        margin: auto;
+        margin-top: 2%;
+        overflow: auto;
+    }
+    .field-content2::-webkit-scrollbar {
+        display: none;
+        width: 5px; /* 设置滚动条宽度 */
+    }
+    .index-message:hover .field-content2::-webkit-scrollbar{
+        display: block;
+    }
+    .field-content2::-webkit-scrollbar-track {
+        background-color: #00000000; /* 设置滚动条背景色 */
+    }
+    .field-content2::-webkit-scrollbar-thumb {
+        background-color: #8c8c8c9e; /* 设置滚动条滑块颜色 */
+        border-radius: 7px; /* 设置滚动条滑块圆角 */
+    }
+    .field-content2::-webkit-scrollbar-thumb:hover {
+        background-color: #6565659e; /* 设置滚动条滑块悬停颜色 */
+    }
+    .field-content1::-webkit-scrollbar {
+        display: none;
+        width: 5px;
+    }
+    .index-articles:hover .field-content1::-webkit-scrollbar{
+        display: block;
+    }
+    .index-tools:hover .field-content1::-webkit-scrollbar{
+        display: block;
+    }
+    .field-content1::-webkit-scrollbar-track {
+        background-color: #00000000;
+    }
+    .field-content1::-webkit-scrollbar-thumb {
+        background-color: #8c8c8c9e;
+        border-radius: 7px;
+    }
+    .field-content1::-webkit-scrollbar-thumb:hover {
+        background-color: #6565659e;
+    }
 }
 .hello-background::before{
     content: "";
@@ -163,11 +381,23 @@ body{
     top: 3vh;
     width: 100%;
     text-align: center;
-    font-size: 2.5vh;
+    font-size: 2vh;
     font-weight: 550;
     letter-spacing: 0.2vh;
     color: #fff;
     z-index: 0;
+    text-shadow: 0 0 0.1vh #a7a7a7;
+    animation: scrollAnimation 2.5s infinite;
+}
+@keyframes scrollAnimation {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
 }
 .sub-title-text{
     font-size: 2vh;
@@ -205,4 +435,20 @@ body{
 }
 .title-text:hover #changeBack{
     opacity: 1;
+}
+.index-container{
+   width: 100%;
+   height: 100%;
+}
+#my-slider { /* jQ轮播图插件 */
+    width: 100%;
+    height: 100%;
+}
+#my-slider .crs-bar-roll-current {
+    width: 38px;
+    height: 38px;
+}
+#my-slider .crs-bar-roll-item {
+    width: 30px;
+    height: 30px;
 }
