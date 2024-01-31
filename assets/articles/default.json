@@ -1,0 +1,15 @@
+{
+    "title": "文章标题",
+    "description": "文章描述(作者/时间等)",
+    "configure": "default",
+    "text": [
+        "p#以下所有链接均以details.html为根",
+        "i#../assets/test.png|default",
+        "i#../assets/test.png|50%",
+        "h#副标题",
+        "p#文章段落",
+        "a#https://www.baidu.com|百度",
+        "n#<div style='color:green;font-weight:600;font-size:1.5vh;'>自定义HTML内容</div>"
+    ],
+    "status": "EiJiYuhZ"
+}

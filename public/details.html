@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EiJiYuhZ的小站</title>
+    <link rel="icon" type="image/x-icon" href="../assets/icon.png">
+    <link rel="stylesheet" type="text/css" href="./template.css">
+    <link rel="stylesheet" type="text/css" href="./details.css">
+</head>
+<body>
+    <div class="navigation web-font" id="navigationMain">
+        <div class="navigation-logo" id="navLogo"></div>
+        <div class="navigation-search" id="navSearchBox"><input id="navSearch" type="text" placeholder="Search...↘Enter"></div>
+        <div id="menu">☰</div>
+        <div class="navigation-icon" id="navIcon"></div>
+        <ul class="navigation-list" id="navigationList">
+            <li class="list-bar"><a class="list-bar-a" href="../others/home.html">ELSE/其它</a></li>
+            <li class="list-bar" id="navLife">
+                <a class="list-bar-a" href="../life/home.html">LIFE/生活</a>
+                <div class="life-list">
+                    <a class="life-list-bar" href="../life/hobby/page.html">兴趣</a>
+                    <a class="life-list-bar" href="../life/blog/page.html">日常</a>
+                    <a class="life-list-bar" href="../life/share/page.html">分享</a>
+                </div>
+            </li>
+            <li class="list-bar" id="navWork">
+                <a class="list-bar-a" href="../computer/home.html">WORK/工坊</a>
+                <div class="work-list">
+                    <a class="work-list-bar" href="../computer/projects/page.html">项目</a>
+                    <a class="work-list-bar" href="../computer/codes/page.html">技术</a>
+                    <a class="work-list-bar" href="../computer/tools/page.html">工具</a>
+                </div>
+            </li>
+            <li class="list-bar"><a class="list-bar-a" href="../index.html">HOME/首页</a></li>
+        </ul>
+        <div id="optionsList">
+            <abbr title="返回顶部"><div id="optionsListBar1">▲</div></abbr>
+            <abbr title="关于本站"><div id="optionsListBar2">Z</div></abbr>
+            <div class="optionmask"></div>
+        </div>
+        <div id="options">※</div>
+    </div>
+    <div class="web-content"> <!-- 此处定制页面内容 -->
+        <div class="detail-article-box" id="targetD">
+            <!-- 模板渲染位置 -->
+        </div>
+        <div id="returnBtn"><abbr title="返回上一页">←</abbr></div>
+        <div id="detailConfigure">
+            <div id="configure"></div>
+        </div>
+    </div>
+</body>
+<script src="./template.js"></script>
+<script src="../lib/jquery-3.7.1.min.js"></script>
+<script src="../lib/ejs.js"></script>
+<script>
+    document.getElementById("returnBtn").addEventListener('click', function(){ history.back(); });
+    var paras = location.search; // 接收URL参数
+    paras = paras.substr(1).split("&"); // 分割URL
+    var source = paras[0].slice(paras[0].indexOf("=") + 1);
+    source = "../assets/articles/" + source;
+
+    $.get(source, function(data) { // 取对应文章数据并渲染
+        if(data.status != 'EiJiYuhZ') {
+            raiseAlert("ERROR: 文章请求失败!", 3000);
+            return ;
+        }
+        createDetailElement("title",data.title);
+        createDetailElement("description",data.description);
+        switch(data.configure){ // 文章配置
+            case 'default': // 所有声明
+                document.getElementById("configure").innerHTML = "本文为博主原创文章，未经博主允许不得转载！";
+                break;
+            case 'none': // 隐藏此块内容
+                $("#detailConfigure").hide();
+                break;
+        }
+        for(let key in data.text) {
+            let content = data.text[key].substr(2);
+            console.log(content)
+            switch(data.text[key][0]){ // 标识类型
+                case 'p':
+                    createDetailElement("paragraph", content);
+                    break;
+                case 'i':
+                    createImage(content.substr(0, content.indexOf('|')), content.substr(content.indexOf('|') + 1));
+                    break;
+                case 'h':
+                    createDetailElement("subtitle", content);
+                    break;
+                case 'a':
+                    createLink(content.substr(0, content.indexOf('|')), content.substr(content.indexOf('|') + 1));
+                    break;
+                case 'n':
+                    createDiy(content);
+                    break;
+            }
+        }
+    }).fail(function() { // 请求失败
+        raiseAlert("ERROR: 文章请求失败!", 3000);
+    });
+    
+    function createDetailElement(form, text){ // title|description|paragraph|subtitle
+        var bar = document.createElement("div");
+        bar.classList.add("detail-" + form);
+        bar.innerHTML = text;
+        document.getElementById("targetD").appendChild(bar);
+    }
+    function createLink(url, text){ // link
+        var bar = document.createElement("a");
+        bar.classList.add("detail-link");
+        bar.innerHTML = text;
+        bar.href = url;
+        bar.target = "_blank";
+        document.getElementById("targetD").appendChild(bar);
+    }
+    function createImage(isrc, size){ // image, size: 'n%' | 'default'
+        var bar = document.createElement("img");
+        bar.classList.add("detail-image");
+        bar.src = isrc;
+        if(size != "default") bar.style.width = size;
+        document.getElementById("targetD").appendChild(bar);
+    }
+    function createDiy(code){
+        var bar = document.createElement('div');
+        bar.innerHTML = ejs.render(code);
+        document.getElementById("targetD").appendChild(bar);
+    }
+</script>
+</html>

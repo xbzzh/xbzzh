@@ -1,0 +1,275 @@
+/* 大屏模式 */
+@media (min-width:870px) {
+    .life-top-card{
+        width: 90%;
+        height: 40vh;
+        margin: auto;
+        margin-top: 10vh;
+        border-radius: 4vh;
+        box-shadow: 0 0 1vh #c7c7c7;
+        overflow: hidden;
+    }
+    .top-card-img{
+        position: relative;
+        float: left;
+        width: 55%;
+        height: 40vh;
+        overflow: hidden;
+    }
+    .card-img{
+        width: 100%;
+        height: 40vh;
+        background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)), url(./home_card1.jpg) no-repeat;
+        background-size: cover;
+        transition: transform .7s ease;
+    }
+    .life-top-card:hover .card-img{
+        transform: scale(1.07);
+    }
+    #imgAuthor1{
+        position: absolute;
+        left: 3vh;
+        bottom: 1.8vh;
+        font-size: 1.8vh;
+        color: white;
+        text-shadow: 0 0 1vh orange;
+        opacity: 0;
+        transition: opacity .6s ease;
+    }
+    .top-card-content{
+        float: right;
+        width: 45%;
+        height: 40vh;
+        background-color: rgba(255, 255, 255, 0.75);
+    }
+    .life-bottom-card{
+        width: 90%;
+        height: 42vh;
+        margin: auto;
+        margin-top: 4vh;
+    }
+    .left-card{
+        position: relative;
+        float: left;
+        width: 36%;
+        height: 100%;
+        border-radius: 4vh;
+        background-color: rgba(255, 255, 255, 0.75);
+        box-shadow: 0 0 1vh #c7c7c7;
+        overflow: hidden;
+    }
+    .right-card{
+        float: right;
+        width: 61%;
+        height: 100%;
+        border-radius: 4vh;
+        background-color: rgba(255, 255, 255, 0.75);
+        box-shadow: 0 0 1vh #c7c7c7;
+        overflow: hidden;
+    }
+    #scrollBox{
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        cursor: pointer;;
+    }
+    #mobileBox{
+        display: none;
+    }
+    .card-title-container{
+        display: flex;
+        width: 100%;
+        height: 7vh;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .card-titles{
+        padding: 0.5vh;
+        width: 20%;
+        font-size: 1.9vh;
+        text-align: center;
+        color: rgb(47, 47, 47);
+        border-radius: 2vh;
+        background-color: #e9e9e9;
+        cursor: pointer;
+    }
+    .card-titles:hover{
+        color: white;
+        background-color: rgb(161, 227, 161);
+    }
+    #dialogs{
+        display: flex;
+        width: 100%;
+        height: 15%;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.9vh;
+        font-weight: 550;
+        color: palevioletred;
+        box-shadow: 0 0.3vh 0.6vh rgb(255, 229, 233);
+        background: linear-gradient(to right, #fff2f9 0%, #ffffff 50%, #fff2f9 100%);
+    }
+    #clock{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 35%;
+        font-size: 7vh;
+        font-weight: 600;
+        color: white;
+        text-shadow: 0 0 1vh rgb(203, 99, 134);
+        animation: breathe 4s infinite;
+    }
+    @keyframes breathe {
+        0%, 100% {
+            text-shadow: 0 0 1vh rgb(203, 99, 134);
+        }
+        50% {
+            text-shadow: 0 0 2.2vh rgb(207, 116, 146);
+        }
+    }
+    #more{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50%;
+        background-color: rgb(255, 244, 245);
+    }
+}
+/* 小屏模式 */
+@media (max-width:869.99px) {
+    .life-top-card{
+        width: 92%;
+        height: 60vh;
+        margin: auto;
+        margin-top: 2.5vh;
+        border-radius: 4vh;
+        box-shadow: 0 0 1vh #c7c7c7;
+        overflow: hidden;
+    }
+    .top-card-img{
+        position: relative;
+        float: left;
+        width: 100%;
+        height: 45%;
+        overflow: hidden;
+    }
+    .card-img{
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)), url(./home_card1.jpg) no-repeat;
+        background-size: cover;
+    }
+    #imgAuthor1{
+        position: absolute;
+        left: 2.6vh;
+        bottom: 2.4vh;
+        font-size: 1.8vh;
+        color: white;
+        text-shadow: 0 0 1vh orange;
+        opacity: 0;
+        transition: opacity .6s ease;
+    }
+    .top-card-content{
+        float: left;
+        width: 100%;
+        height: 55%;
+        background-color: rgba(255, 255, 255, 0.75);
+    }
+    .left-card{
+        position: relative;
+        width: 92%;
+        height: 40vh;
+        margin: auto;
+        margin-top: 2.5vh;
+        border-radius: 4vh;
+        box-shadow: 0 0 1vh #c7c7c7;
+        background-color: rgba(255, 255, 255, 0.75);
+        overflow: hidden;
+    }
+    .right-card{
+        width: 92%;
+        height: 55vh;
+        margin: auto;
+        margin-top: 2.5vh;
+        border-radius: 4vh;
+        box-shadow: 0 0 1vh #c7c7c7;
+        background-color: rgba(255, 255, 255, 0.75);
+        overflow: hidden;
+        margin-bottom: 2vh;
+    }
+    #scrollBox{
+        display: none;
+    }
+    #mobileBox{
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        transition: all .5s ease-in-out;
+    }
+    .card-title-container{
+        display: flex;
+        width: 100%;
+        height: 7vh;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .card-titles{
+        padding: 0.5vh;
+        width: 20%;
+        font-size: 1.9vh;
+        text-align: center;
+        color: rgb(47, 47, 47);
+        border-radius: 2vh;
+        background-color: #e9e9e9;
+        cursor: pointer;
+    }
+    .card-titles:hover{
+        color: white;
+        background-color: rgb(161, 227, 161);
+    }
+    #dialogs{
+        display: flex;
+        width: 100%;
+        height: 15%;
+        justify-content: center;
+        align-items: center;
+        font-size: 2vh;
+        font-weight: 550;
+        color: palevioletred;
+        box-shadow: 0 0.3vh 0.6vh rgb(255, 229, 233);
+        background: linear-gradient(to right, #fff2f9 0%, #ffffff 50%, #fff2f9 100%);
+    }
+    #clock{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 35%;
+        font-size: 6.5vh;
+        font-weight: 600;
+        color: white;
+        text-shadow: 0 0 1vh rgb(203, 99, 134);
+        animation: breathe 4s infinite;
+    }
+    @keyframes breathe {
+        0%, 100% {
+            text-shadow: 0 0 1vh rgb(203, 99, 134);
+        }
+        50% {
+            text-shadow: 0 0 2.2vh rgb(207, 116, 146);
+        }
+    }
+    #more{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50%;
+        background-color: rgb(255, 244, 245);
+    }
+}

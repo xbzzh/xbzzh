@@ -425,6 +425,7 @@ body{
     color: #fff;
     opacity: 0;
     cursor: pointer;
+    white-space: nowrap;
     transition: opacity .6s ease;
 }
 #changeBack:hover{
