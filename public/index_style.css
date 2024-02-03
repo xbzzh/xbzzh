@@ -113,13 +113,11 @@ body{
         float: right;
         width: 31%;
         height: 95%;
-        background-color: rgba(255, 255, 255, 0.75);
         border-radius: 3vh;
         margin-right: 1.75%;
         margin-top: 1%;
         transition: box-shadow .6s ease;
     }
-    .index-tools:hover{ box-shadow: 0 0 1vh #a6a6a6; }
     .index-field-title{
         width: 70%;
         line-height: 4vh;
@@ -292,11 +290,9 @@ body{
         margin: auto;
         margin-top: 2vh;
         padding-top: 1.5vh;
-        background-color: rgba(255, 255, 255, 0.75);
         border-radius: 3vh;
         transition: box-shadow .6s ease;
     }
-    .index-tools:hover{ box-shadow: 0 0 1vh #a6a6a6; }
     .index-field-title{
         width: 70%;
         line-height: 4vh;
@@ -452,4 +448,43 @@ body{
 #my-slider .crs-bar-roll-item {
     width: 30px;
     height: 30px;
+}
+
+.tools-list-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.tools-app{
+    width: 9vh;
+    margin: 1vh;
+}
+.tools-app-icon{
+    display: block;
+    width: 9vh;
+    height: 9vh;
+    border-radius: 1.5vh;
+    background-size: auto;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 0 0.4vh #848484;
+    transition: box-shadow .5s ease;
+}
+.tools-app-icon:hover{
+    box-shadow: 0 0 1vh #848484;
+}
+.tools-app-title{
+    width: 9vh;
+    line-height: 2vh;
+    text-align: center;
+    font-size: 1.5vh;
+    color: #383838;
+    margin-top: 0.5vh;
+    word-wrap: break-word;
+    user-select: none;
+}
+.app-icon-img{
+    width: 100%;
+    height: 100%;
 }
