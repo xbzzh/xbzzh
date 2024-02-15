@@ -449,7 +449,6 @@ body{
     width: 30px;
     height: 30px;
 }
-
 .tools-list-container{
     width: 100%;
     display: flex;
@@ -469,7 +468,6 @@ body{
     overflow: hidden;
     cursor: pointer;
     box-shadow: 0 0 0.4vh #848484;
-    transition: box-shadow .5s ease;
 }
 .tools-app-icon:hover{
     box-shadow: 0 0 1vh #848484;
@@ -487,4 +485,53 @@ body{
 .app-icon-img{
     width: 100%;
     height: 100%;
+}
+.rcmd-article{
+    width: 92%;
+    height: fit-content;
+    margin: auto;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    margin-bottom: 1.5vh;
+    border-radius: 1.2vh;
+    box-shadow: 0.1vh 0.1vh 0.4vh #ddd;
+    background: linear-gradient(-60deg, #f2f2f2 20%, white 0);
+    overflow: hidden;
+}
+.rcmd-article:hover{
+    border-left: 0.4vh solid rgb(42, 139, 42);
+    border-right: 0.4vh solid rgb(42, 139, 42);
+}
+.article-title{
+    display: block;
+    text-decoration: none;
+    width: fit-content;
+    line-height: 3vh;
+    font-size: 2.1vh;
+    font-weight: 600;
+    color: rgb(0, 52, 0);
+    margin-left: 1vh;
+    margin-right: 1vh;
+    margin-bottom: 0.3vh;
+}
+.article-title:hover{
+    color: rgb(64, 177, 64);
+}
+.article-info{
+    line-height: 2vh;
+    font-size: 1.6vh;
+    color: rgb(91, 91, 91);
+    margin-left: 1vh;
+    margin-right: 1vh;
+}
+#messageNull{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2vh;
+    font-weight: 550;
+    color: #0f5140;
+    letter-spacing: 0.3vh;
 }

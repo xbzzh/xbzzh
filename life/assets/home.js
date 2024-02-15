@@ -1,11 +1,98 @@
 const weatherURL = "https://devapi.qweather.com/v7/weather/now?";
+const musicList = [
+    ["No Ceiling", "HOYO-MiX", "./assets/songs/cd_noceiling.png", "./assets/songs/No Ceiling.mp3"],
+    ["Circle of Life", "HOYO-MiX", "./assets/songs/cd_circleoflife.png", "./assets/songs/Circle of Life.mp3"],
+];
+const dialog_list = ["「 嗨，想我了吗♪ 」", "新的一天从一场美妙的邂逅开始♪", "这束鲜花，要心怀感激地收下哦♪", "可爱的少女心可是无所不能的哦♥"];
 var card_theme = 0; // 0: share  1: hobby  2: blog
 var interval_is_on = true;
 var dialog_idx = 0; // max: 3
-const dialog_list = ["「 嗨，想我了吗♪ 」", "新的一天从一场美妙的邂逅开始♪", "这束鲜花，要心怀感激地收下哦♪", "可爱的少女心可是无所不能的哦♥"];
+var music_or_video = true; // true：当前为推荐音乐
+var audioPlayer = document.getElementById("audioPlayer");
+var musicText = document.getElementById("songText");
+var musicTextOrigin = "";
+var percent = 0; // 加载进度
+var music_is_play = false;
 document.getElementById("toShare").style.color = "white";
 document.getElementById("toShare").style.backgroundColor = "rgb(161, 227, 161)";
 $("#weatherBody").hide();
+
+window.onload = function() {
+    createMusicList();
+    musicSelect(0);
+};
+
+function createMusicList() {
+    for(let idx in musicList) {
+        let rcmdBar = document.createElement('div');
+        let rcmdTitle = document.createElement('div');
+        let rcmdInfo = document.createElement('div');
+        rcmdBar.classList.add("rcmd-lst-bar");
+        rcmdTitle.classList.add("rcmd-lst-title");
+        rcmdInfo.classList.add("rcmd-lst-info");
+        rcmdBar.id = "song" + idx;
+        rcmdTitle.innerHTML = musicList[idx][0];
+        rcmdInfo.innerHTML = musicList[idx][1];
+        rcmdBar.appendChild(rcmdTitle);
+        rcmdBar.appendChild(rcmdInfo);
+        rcmdBar.addEventListener('click', () => {
+            audioPlayer.pause();
+            let index = rcmdBar.id[4];
+            document.getElementById("cdBox").src = musicList[index][2];
+            audioPlayer.src = musicList[index][3];
+            document.getElementById("rcmdSongBox").innerHTML = ""; // 清空子元素
+            createMusicList();
+            musicSelect(index);
+            document.getElementById("pBar").style.width = "0%";
+        });
+        document.getElementById("rcmdSongBox").appendChild(rcmdBar);
+    }
+}
+
+function musicSelect(id) {
+    let sel = document.getElementById("song" + id);
+    sel.style.background = "linear-gradient(-60deg, #afe6aa 20%, white 0)";
+    sel.style.cursor = "default";
+    sel.firstChild.style.color = "#0ba12c";
+    musicText.innerHTML = musicList[id][0] + " / " + musicList[id][1];
+    musicTextOrigin = musicList[id][0] + " / " + musicList[id][1];
+}
+
+audioPlayer.addEventListener("progress", function() { // 更新加载进度的函数
+    var buffered = audioPlayer.buffered; // 获取已缓冲的部分
+    if (buffered.length > 0) { // 计算已缓冲的百分比
+        percent = (buffered.end(buffered.length - 1) / audioPlayer.duration) * 100;
+        document.getElementById("pmBar").style.width = percent + "%";
+    }
+});
+
+audioPlayer.addEventListener("timeupdate", function() {
+    var progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+    document.getElementById("pBar").style.width = progress + "%";
+});
+
+document.getElementById("playBtn").addEventListener('click', () => {
+    if(!music_is_play && percent == 100) { // then play
+        audioPlayer.play();
+        document.getElementById("playBtn").innerHTML = "||";
+        document.getElementById("cdBox").style.animationPlayState = "running";
+        musicText.innerHTML = "正在播放：" + musicTextOrigin;
+        music_is_play = !music_is_play;
+    } else if (music_is_play && percent == 100) { // then stop
+        audioPlayer.pause();
+        document.getElementById("playBtn").innerHTML = "▶";
+        document.getElementById("cdBox").style.animationPlayState = "paused";
+        musicText.innerHTML = "已暂停：" + musicTextOrigin;
+        music_is_play = !music_is_play;
+    } else {
+        raiseAlert("音乐正在加载中", 3000);
+    }
+});
+
+document.getElementById("volumeSlider").oninput = function() {
+    var volume = this.value / 100;
+    audioPlayer.volume = volume;
+};
 
 var changeCard = setInterval(() => {
     if(card_theme == 0) {
@@ -175,3 +262,30 @@ document.getElementById("cityCfm").addEventListener('click', function() {
         raiseAlert("ERROR: 天气请求失败!", 3000);
     });
 });
+
+function switchMorV() {
+    if(music_or_video) { // to Video
+        if(music_is_play) {
+            audioPlayer.pause();
+            document.getElementById("playBtn").innerHTML = "▶";
+            document.getElementById("cdBox").style.animationPlayState = "paused";
+            musicText.innerHTML = "已暂停：" + musicTextOrigin;
+            music_is_play = false;
+        }
+        $("#musicRcmd").hide();
+        document.getElementById("rtCard").style.animation = "rcdAni 1s ease";
+        setTimeout(() => {
+            document.getElementById("rtCard").style.animation = "";
+            $("#videoRcmd").show();
+        }, 1000);
+    }
+    else { // to Music
+        $("#videoRcmd").hide();
+        document.getElementById("rtCard").style.animation = "rcdAni 1s ease";
+        setTimeout(() => {
+            document.getElementById("rtCard").style.animation = "";
+            $("#musicRcmd").show();
+        }, 1000);
+    }
+    music_or_video = !music_or_video;
+}

@@ -90,8 +90,40 @@
                     </div>
                 </div>
             </div>
-            <div class="right-card">
-                
+            <div class="right-card" id="rtCard">
+                <div id="musicRcmd">
+                    <audio id="audioPlayer" src="./assets/songs/No Ceiling.mp3"></audio>
+                    <div class="rcmd-setting-box">
+                        <div class="rcmd-title" id="rcmdMusic" style="box-shadow: inset 0 0 0.4vh #ddd; color: rgb(38, 147, 38);cursor: default;">推荐音乐</div>
+                        <div class="rcmd-title" id="rcmdVideo" onclick="switchMorV()">推荐视频</div>
+                    </div>
+                    <div class="rcmd-list-box" id="rcmdSongBox">
+                        <!-- 歌曲列表插入处 -->
+                    </div>
+                    <div class="rcmd-content-box">
+                        <div class="cd-area"><img id="cdBox" src="./assets/songs/cd_noceiling.png"></div>
+                        <div class="ctrl-area">
+                            <div class="process-bar" id="pmBar"><div id="pBar"></div></div>
+                            <div class="ctrl-spec-area">
+                                <div class="spec"><div class="song-text-area"><div id="songText"></div></div></div>
+                                <div class="spec"><div id="playBtn">▶</div></div>
+                                <div class="spec"><input type="range" min="0" max="100" value="50" style="width: 80%;" id="volumeSlider"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="videoRcmd" style="display: none;">
+                    <div class="rcmd-setting-box">
+                        <div class="rcmd-title" id="rcmdMusic" onclick="switchMorV()">推荐音乐</div>
+                        <div class="rcmd-title" id="rcmdVideo" style="box-shadow: inset 0 0 0.4vh #ddd; color: rgb(38, 147, 38);cursor: default;">推荐视频</div>
+                    </div>
+                    <div class="rcmd-list-box">
+                        施工中...
+                    </div>
+                    <div class="rcmd-content-box">
+                        施工中...
+                    </div>
+                </div>
             </div>
         </div>
     </div>
